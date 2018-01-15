@@ -8,6 +8,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
     <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
+
+    <base href="/">
+
 </head>
 
 <body>
@@ -24,10 +27,10 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    {#<li><a href="{% url 'about' %}">About</a></li>#}
+                    {#<li><a href="{% url 'contact' %}">Contact</a></li>#}
                 </ul>
-                {% include 'app/loginpartial.html' %}
+                {#{% include 'app/loginpartial.html' %}#}
             </div>
         </div>
     </div>
