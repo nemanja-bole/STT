@@ -8,6 +8,7 @@ import django.contrib.auth.views
 
 import app.forms
 import app.views
+import accounts.urls
 
 # Uncomment the next lines to enable the admin:
 from django.conf.urls import include
@@ -52,6 +53,8 @@ urlpatterns = [
     url(r'^api/auth/$', obtain_jwt_token),
     url(r'^api/token-refresh/$', refresh_jwt_token),
     url(r'^api/token-verify/$', verify_jwt_token),
+    
+    url(r'^api/accounts/', include(accounts.urls)),
 
     url(r'^(?P<path>.*)/$', app.views.home, name='home'),
 

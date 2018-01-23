@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -7,6 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent {
 
-  constructor() { }
+  invalidSignUp: boolean;
+
+  constructor(
+    private authService: AuthService,
+    private router: Router) {
+
+  }
+
+  signUp(credentials){
+    this.authService.signUp(credentials)
+    .subscribe(result => {
+      if(result){
+        this.router.navigate(['/sign-up-success']);
+      }
+      else{
+        this.invalidSignUp = true;
+      }
+    })
+  }
 
 }

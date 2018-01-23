@@ -39,7 +39,13 @@
     </Compile>
     <Compile Include="accounts\migrations\__init__.py" />
     <Compile Include="accounts\models.py" />
+    <Compile Include="accounts\serializers.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="accounts\tests.py" />
+    <Compile Include="accounts\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="accounts\views.py" />
     <Compile Include="accounts\__init__.py" />
     <Compile Include="app\forms.py" />

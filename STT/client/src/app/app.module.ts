@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { AuthHttp, AUTH_PROVIDERS, provideAuth, AuthConfig } from 
+    'angular2-jwt/angular2-jwt';
 
 
 import { AppComponent } from './app.component';
@@ -27,13 +29,15 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     HttpModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, canActivate: [AuthGuard] }, 
-      { path: 'login', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
+      { path: 'sign-up', component: SignUpComponent }
     ])
   ],
   providers: [
     AuthService,
     AuthGuard,
-    AdminAuthGuard
+    AdminAuthGuard,
+    AUTH_PROVIDERS
   ],
   bootstrap: [AppComponent]
 })

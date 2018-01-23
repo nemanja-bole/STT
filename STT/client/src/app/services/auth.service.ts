@@ -52,7 +52,10 @@ export class AuthService {
   }
 
   signUp(credentials) {
-    return this.http.post('api/sign-up/', JSON.stringify(credentials))
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post('api/sign-up/', JSON.stringify(credentials), { headers: headers })
     .map(response => {
       let result = response.json();
       if(result){
