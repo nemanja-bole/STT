@@ -14,6 +14,7 @@ import { AuthService } from './services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { RegistrationSuccessComponent } from './registration-success/registration-success.component';
 
 
 @NgModule({
@@ -21,16 +22,18 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    SignUpComponent
+    SignUpComponent,
+    RegistrationSuccessComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, canActivate: [AuthGuard] }, 
+      { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [AuthGuard], }, 
       { path: 'login', component: LoginComponent },
-      { path: 'sign-up', component: SignUpComponent }
+      { path: 'sign-up', component: SignUpComponent },
+      { path: 'registration-success', component: RegistrationSuccessComponent},
     ])
   ],
   providers: [

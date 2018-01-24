@@ -37,7 +37,7 @@ export class AuthService {
   }
 
   isLoggedIn(){
-
+    console.log("test");
     return tokenNotExpired();
 
   }
@@ -55,7 +55,7 @@ export class AuthService {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    return this.http.post('api/sign-up/', JSON.stringify(credentials), { headers: headers })
+    return this.http.post('api/accounts/sign-up/', JSON.stringify(credentials), { headers: headers })
     .map(response => {
       let result = response.json();
       if(result){

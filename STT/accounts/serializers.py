@@ -1,27 +1,39 @@
 from rest_framework import serializers
 from .models import User
+import re
 
 class UserCreateSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only = True)
+
     class Meta:
         model = User
-        fields = [
+        fields = (
             'id',
             'email',
             'password',
             'first_name',
             'last_name',
-            ]
-        write_only_fields = ('password',)
+            )
+        
         read_only_fields = ('id',)
 
-        def create(self, validated_data):
-            user = User.objects.create_user(
-                email = validated_data['email'],
-                first_name = validated_data['first_name'],
-                last_name = validated_data['last_name'],
-            )
 
-            user.set_password(validated_data['password'])
-            user.save()
+    def create(self, validated_data):
+        user = User.objects.create_user(**validated_data)                        
+        user.save()
+        return user
 
-            return user;
+    def validate_email(self, value):
+        qs = User.objects.filter(email = value)   
+            
+        if qs.exists():
+            raise serializers.ValidationError("You are already signed up.")
+
+        regex = r"@svea.com$"
+
+        if re.search(regex, value) is None:
+            raise serializers.ValidationError("You must have Svea email account.")
+
+        return value
+
+

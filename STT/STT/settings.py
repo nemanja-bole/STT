@@ -146,4 +146,5 @@ JWT_AUTH = {
     'JWT_ALLOW_REFRESH': True,
     'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
     'JWT_PAYLOAD_GET_USERNAME_HANDLER' : 'STT.jwt_helper.get_username_field',
+    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
 }

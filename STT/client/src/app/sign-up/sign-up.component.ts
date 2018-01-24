@@ -21,7 +21,7 @@ export class SignUpComponent {
     this.authService.signUp(credentials)
     .subscribe(result => {
       if(result){
-        this.router.navigate(['/sign-up-success']);
+        this.router.navigate(['/registration-success']);
       }
       else{
         this.invalidSignUp = true;
