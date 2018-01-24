@@ -1,4 +1,7 @@
 from django.contrib.auth.base_user import BaseUserManager
+from django.contrib import messages
+from django.core.mail import send_mail
+from django.conf import settings
 
 class UserManager(BaseUserManager):
     use_in_migrations: True
@@ -14,6 +17,15 @@ class UserManager(BaseUserManager):
 
         user.set_password(password)
         user.save(using = self._db)
+
+        if user.get('is_active') is not True:
+           subject = 'Thank you for your registration'
+           message = 'Thank you for your registration. Please go to link below to activate your account.'
+           from_email = settings.EMAIL_HOST_USER
+           to_list = [settings.EMAIL_HOST_USER]
+
+           send_mail(subject, message, from_email, to_list, fail_silently = True)
+
         return user
 
 

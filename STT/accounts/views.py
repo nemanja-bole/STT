@@ -15,9 +15,6 @@ class UserCreateView(generics.CreateAPIView):
     def get_queryset(self):
         return User.objects.all();
 
-    def perform_create(self, serializer):
-        
-        return super().perform_create(serializer)
 
 
 

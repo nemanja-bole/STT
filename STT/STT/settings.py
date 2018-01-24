@@ -148,3 +148,10 @@ JWT_AUTH = {
     'JWT_PAYLOAD_GET_USERNAME_HANDLER' : 'STT.jwt_helper.get_username_field',
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
 }
+
+# for gmail or google apps
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 587
