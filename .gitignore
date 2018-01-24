@@ -261,5 +261,5 @@ __pycache__/
 *.pyc
 
 # Django
-/STT/env/
+STT/env/
 STT/app/static/angular/
