@@ -67,6 +67,7 @@
     <Folder Include="accounts\" />
     <Folder Include="accounts\migrations\" />
     <Folder Include="accounts\templates\" />
+    <Folder Include="accounts\templates\email_templates\" />
     <Folder Include="app\" />
     <Folder Include="app\migrations\" />
     <Folder Include="app\static\" />
@@ -86,7 +87,12 @@
     <Folder Include="STT\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="accounts\templates\index.html" />
+    <Content Include="accounts\templates\email_templates\activation_email.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="accounts\templates\email_templates\activation_email.txt">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="app\static\angular\favicon.ico" />
     <Content Include="app\static\angular\index.html" />
     <Content Include="app\static\angular\inline.bundle.js" />

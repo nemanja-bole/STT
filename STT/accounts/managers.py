@@ -2,6 +2,9 @@ from django.contrib.auth.base_user import BaseUserManager
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
+from django.template.loader import render_to_string
+
+from accounts.models import ActivationEmail #circular dependency exception TODO resolve
 
 class UserManager(BaseUserManager):
     use_in_migrations: True
@@ -18,13 +21,24 @@ class UserManager(BaseUserManager):
         user.set_password(password)
         user.save(using = self._db)
 
-        if user.get('is_active') is not True:
-           subject = 'Thank you for your registration'
-           message = 'Thank you for your registration. Please go to link below to activate your account.'
-           from_email = settings.EMAIL_HOST_USER
-           to_list = [settings.EMAIL_HOST_USER]
+        if user.is_active is not True:
+            
+            emailModel = {
+                "first_name": user.first_name,
+                "last_name": user.last_name,
+                "link": user.link,
+                
+            }
 
-           send_mail(subject, message, from_email, to_list, fail_silently = True)
+            msg_plain = render_to_string("templates/email_templates/activation_email.txt", emailModel)
+            msg_html = render_to_string("templates/email_templates/activation_email.html", emailModel)
+
+            subject = 'Thank you for your registration'
+            message = 'Thank you for your registration. Please go to link below to activate your account.'
+            from_email = settings.EMAIL_HOST_USER
+            to_list = [settings.EMAIL_HOST_USER]
+
+            send_mail(subject, msg_plain, from_email, to_list, fail_silently = True, html_message = msg_html)
 
         return user
 

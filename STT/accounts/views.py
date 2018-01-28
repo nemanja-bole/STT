@@ -1,9 +1,13 @@
 from django.shortcuts import render
+
 from rest_framework import generics, permissions, serializers
+from rest_framework.views import APIView
+from rest_framework.exceptions import APIException
+from rest_framework.response import Response
+
+
 from .models import User
 from .serializers import UserCreateSerializer
-from rest_framework.exceptions import APIException
-from django.views.decorators.csrf import csrf_exempt
 
 
 class UserCreateView(generics.CreateAPIView):
@@ -15,6 +19,12 @@ class UserCreateView(generics.CreateAPIView):
     def get_queryset(self):
         return User.objects.all();
 
+
+class UserActivationView(APIView):
+    permission_classes = (permissions.AllowAny,)
+
+    def get(self, request, token):
+        return Response({ "activation" : True });
 
 
 
