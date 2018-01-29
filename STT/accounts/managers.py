@@ -30,7 +30,7 @@ class UserManager(BaseUserManager):
             emailModel = {
                 "first_name": extra_fields.get('first_name'),
                 "last_name": extra_fields.get('last_name'),
-                "link": "domain" + "/" + token,
+                "link": token
                 
             }
 
