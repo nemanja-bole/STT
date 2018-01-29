@@ -4,7 +4,9 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.template.loader import render_to_string
 
-from accounts.models import ActivationEmail #circular dependency exception TODO resolve
+from rest_framework_jwt.utils import jwt_encode_handler, jwt_decode_handler
+
+from STT.jwt_helper import jwt_payload_handler
 
 class UserManager(BaseUserManager):
     use_in_migrations: True
@@ -23,18 +25,20 @@ class UserManager(BaseUserManager):
 
         if user.is_active is not True:
             
+            token = jwt_encode_handler(jwt_payload_handler(user));
+
             emailModel = {
-                "first_name": user.first_name,
-                "last_name": user.last_name,
-                "link": user.link,
+                "first_name": extra_fields.get('first_name'),
+                "last_name": extra_fields.get('last_name'),
+                "link": "domain" + "/" + token,
                 
             }
 
-            msg_plain = render_to_string("templates/email_templates/activation_email.txt", emailModel)
-            msg_html = render_to_string("templates/email_templates/activation_email.html", emailModel)
+            msg_plain = render_to_string("activation_email.txt", emailModel)
+            msg_html = render_to_string("activation_email.html", emailModel)
 
             subject = 'Thank you for your registration'
-            message = 'Thank you for your registration. Please go to link below to activate your account.'
+            
             from_email = settings.EMAIL_HOST_USER
             to_list = [settings.EMAIL_HOST_USER]
 
