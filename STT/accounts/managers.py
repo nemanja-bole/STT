@@ -3,8 +3,9 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
 from django.template.loader import render_to_string
+from django.urls import reverse
 
-from rest_framework_jwt.utils import jwt_encode_handler, jwt_decode_handler
+from rest_framework_jwt.utils import jwt_encode_handler
 
 from STT.jwt_helper import jwt_payload_handler
 
@@ -30,7 +31,7 @@ class UserManager(BaseUserManager):
             emailModel = {
                 "first_name": extra_fields.get('first_name'),
                 "last_name": extra_fields.get('last_name'),
-                "link": token
+                "link": settings.DEFAULT_DOMAIN + "/activation/" + token
                 
             }
 

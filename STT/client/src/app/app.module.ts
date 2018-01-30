@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { RegistrationSuccessComponent } from './registration-success/registration-success.component';
+import { ActivationComponent } from './activation/activation.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { RegistrationSuccessComponent } from './registration-success/registratio
     LoginComponent,
     HomeComponent,
     SignUpComponent,
-    RegistrationSuccessComponent
+    RegistrationSuccessComponent,
+    ActivationComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,7 @@ import { RegistrationSuccessComponent } from './registration-success/registratio
       { path: 'login', component: LoginComponent },
       { path: 'sign-up', component: SignUpComponent },
       { path: 'registration-success', component: RegistrationSuccessComponent},
+      { path: 'activation/:token', component: ActivationComponent}
     ])
   ],
   providers: [

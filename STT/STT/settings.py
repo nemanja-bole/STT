@@ -146,6 +146,7 @@ JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'STT.jwt_helper.jwt_response_payload_handler',
     'JWT_PAYLOAD_HANDLER': 'STT.jwt_helper.jwt_payload_handler',
     'JWT_ALLOW_REFRESH': True,
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=2),
     'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
     'JWT_PAYLOAD_GET_USERNAME_HANDLER' : 'STT.jwt_helper.get_username_field',
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
@@ -157,3 +158,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
+
+#default domain settings
+
+DEFAULT_DOMAIN = "http://localhost:8080"

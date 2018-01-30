@@ -2,7 +2,7 @@ Dear {{ first_name }} {{ last_name }}
 
 Thank you for your registration. Please go to link below to activate your account.
 
-link: {{ link }}
+Link: {{ link }}
 
 Best regards,
 STT Team

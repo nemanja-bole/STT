@@ -67,4 +67,14 @@ export class AuthService {
     });
   }
 
+  activation(token) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.get('api/accounts/activation/', { headers: headers, params: { token: token } })
+      .map(response => {
+        return true;
+      })
+  }
+
 }

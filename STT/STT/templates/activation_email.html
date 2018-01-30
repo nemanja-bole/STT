@@ -5,10 +5,16 @@
     <body>
         <h2>Dear {{ first_name }} {{ last_name }}</h2>
         <p>
-            Thank you for your registration. Please go to link below to activate your account.
+            Thank you for your registration. Please click below to activate your account.
         </p>
 
-        <a href="{{ link }}">{{ link }}</a>
+        <p>
+            <a href="{{ link }}">ACTIVATE YOUR ACCOUNT</a>
+        </p>
+
+        <p>
+            Or copy this link to your browser search bar: {{ link }} 
+        </p>
 
         <p>
             Best regards<br>
