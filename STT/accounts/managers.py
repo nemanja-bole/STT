@@ -23,27 +23,8 @@ class UserManager(BaseUserManager):
 
         user.set_password(password)
         user.save(using = self._db)
-
         if user.is_active is not True:
-            
-            token = jwt_encode_handler(jwt_payload_handler(user));
-
-            emailModel = {
-                "first_name": extra_fields.get('first_name'),
-                "last_name": extra_fields.get('last_name'),
-                "link": settings.DEFAULT_DOMAIN + "/activation/" + token
-                
-            }
-
-            msg_plain = render_to_string("activation_email.txt", emailModel)
-            msg_html = render_to_string("activation_email.html", emailModel)
-
-            subject = 'Thank you for your registration'
-            
-            from_email = settings.EMAIL_HOST_USER
-            to_list = [settings.EMAIL_HOST_USER]
-
-            send_mail(subject, msg_plain, from_email, to_list, fail_silently = True, html_message = msg_html)
+            self.send_activation_mail(user)
 
         return user
 
@@ -61,4 +42,26 @@ class UserManager(BaseUserManager):
             raise ValueError("Superuser must have is_superuser, is_staff, is_active = True")
 
         return self._create_user(email, password, **extra_fields)
+      
 
+    # Send activation mail/link for given user
+    def send_activation_mail(self, user):
+        token = jwt_encode_handler(jwt_payload_handler(user))
+
+        emailModel = {
+            "first_name": user.first_name,
+            "last_name": user.last_name,
+            "link": settings.DEFAULT_DOMAIN + "/activation/" + token                
+        }
+
+        msg_plain = render_to_string("activation_email.txt", emailModel)
+        msg_html = render_to_string("activation_email.html", emailModel)
+
+        subject = 'Thank you for your registration'
+            
+        from_email = settings.EMAIL_HOST_USER
+        to_list = [user.email]
+
+        send_mail(subject, msg_plain, from_email, to_list, fail_silently = True, html_message = msg_html)
+
+        return

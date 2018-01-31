@@ -16,6 +16,7 @@ import { AuthGuard } from './services/auth-guard.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { RegistrationSuccessComponent } from './registration-success/registration-success.component';
 import { ActivationComponent } from './activation/activation.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ActivationComponent } from './activation/activation.component';
     HomeComponent,
     SignUpComponent,
     RegistrationSuccessComponent,
-    ActivationComponent
+    ActivationComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
