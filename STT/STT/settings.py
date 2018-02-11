@@ -36,6 +36,7 @@ AUTH_USER_MODEL = 'accounts.User'
 INSTALLED_APPS = [
     'app',
     'accounts',
+    'competitions',
     # Add your apps here to enable them
     'django.contrib.admin',
     'django.contrib.auth',

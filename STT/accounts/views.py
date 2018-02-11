@@ -10,17 +10,14 @@ from rest_framework_jwt.utils import jwt_decode_handler
 from .models import User
 from .serializers import UserCreateSerializer
 
-
 class UserCreateView(generics.CreateAPIView):
     lookup_field        = 'id'
     serializer_class    = UserCreateSerializer
     permission_classes = (permissions.AllowAny,)
 
-
     def get_queryset(self):
         return User.objects.all();
-
-
+    
 class UserActivationView(APIView):
     permission_classes = (permissions.AllowAny,)
 
@@ -28,8 +25,9 @@ class UserActivationView(APIView):
         try:
             payload = jwt_decode_handler(request.GET.get('token'))
             user = User.objects.get(id=payload['user_id'])
-            user.is_active = True
-            user.save()
+            if user.is_active is False:
+                user.is_active = True
+                user.save()
         except:
             pass        
 

@@ -1,3 +1,5 @@
 from django.contrib import admin
+from competitions.models import Competition, PlayerCompetitionStat, History
 
-# Register your models here.
+
+admin.site.register([Competition, PlayerCompetitionStat, History])
