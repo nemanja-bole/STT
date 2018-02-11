@@ -8,11 +8,11 @@ from rest_framework_jwt.utils import jwt_decode_handler
 
 
 from .models import User
-from .serializers import UserCreateSerializer
+from .serializers import UserSerializer
 
 class UserCreateView(generics.CreateAPIView):
     lookup_field        = 'id'
-    serializer_class    = UserCreateSerializer
+    serializer_class    = UserSerializer
     permission_classes = (permissions.AllowAny,)
 
     def get_queryset(self):
