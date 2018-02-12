@@ -19,7 +19,7 @@ class Competition(models.Model):
 
 class PlayerCompetitionStat(models.Model):
     player = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING, related_name = "competitions")
-    competition = models.ForeignKey(Competition, on_delete=models.DO_NOTHING, related_name="players")
+    competition = models.ForeignKey('Competition', on_delete=models.DO_NOTHING, related_name="players",)
     points = models.DecimalField(max_digits = 10, decimal_places = 2)
     games_played = models.IntegerField()
     won = models.IntegerField()
@@ -32,16 +32,12 @@ class PlayerCompetitionStat(models.Model):
 
 
 class History(models.Model):
-    competition = models.ForeignKey(Competition, on_delete = models.DO_NOTHING)
-    player_one = models.ForeignKey(settings.AUTH_USER_MODEL, related_name= "history_player_one")
-    player_two = models.ForeignKey(settings.AUTH_USER_MODEL, related_name= "history_player_two")
+    competition = models.ForeignKey('Competition', on_delete = models.DO_NOTHING)
+    player_one = models.ForeignKey(settings.AUTH_USER_MODEL, related_name= "played_games_one", on_delete = models.DO_NOTHING)
+    player_two = models.ForeignKey(settings.AUTH_USER_MODEL, related_name= "played_games_two", on_delete = models.DO_NOTHING)
     result = models.IntegerField()
     score = models.CharField(max_length = 30)
     date = models.DateTimeField()
 
     def __str__(self):
         return player1.get_full_name() + " : " + player2.get_full_name()
-
-    def clean(self):
-        if player_one.id < player_two.id:
-            raise ValidationError("Player one Id have to be greater than player two Id.")
