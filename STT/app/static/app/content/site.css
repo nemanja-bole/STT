@@ -1,19 +1,46 @@
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #eeeeee;
+    color: rgb(51, 51, 51)
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+/*Setting materialize theme colors*/
+/* .nav-wrapper {
+    background-color: #00abc7;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.secondary-content>.material-icons {
+    color: #00abc7;
+}
+
+.btn {
+    background-color: #00abc7;
+}
+
+.page-footer{
+    background-color: #00abc7;
+}
+
+.input-field {
+    color: #00abc7;
+}
+
+.input-field>.material-icons {
+    color: #00abc7;
+}
+
+.input-field>label {
+    color: #00abc7;
+}
+
+.dropdown-content>li>a {
+    color: #00abc7;
+} */
+
+.forms-stt {
+    padding: 20px !important;
+    background-color: white;
 }
 
 /* styles for validation helpers */

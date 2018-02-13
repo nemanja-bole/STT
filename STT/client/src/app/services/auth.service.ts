@@ -25,7 +25,7 @@ export class AuthService {
         localStorage.setItem('token', result.token);
         return true;
       }
-      
+
       return false;
 
     });
@@ -37,9 +37,7 @@ export class AuthService {
   }
 
   isLoggedIn(){
-    console.log("test");
     return tokenNotExpired();
-
   }
 
   get currentUser(){
