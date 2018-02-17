@@ -1,42 +1,67 @@
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding: 0;
     background-color: #eeeeee;
     color: rgb(51, 51, 51)
 }
 
 /*Setting materialize theme colors*/
-/* .nav-wrapper {
-    background-color: #00abc7;
+.nav-wrapper {
+    background-color: #1091a7;
 }
 
 .secondary-content>.material-icons {
-    color: #00abc7;
+    color: #1091a7;
 }
 
 .btn {
-    background-color: #00abc7;
+    background-color: #1091a7;
 }
 
 .page-footer{
-    background-color: #00abc7;
+    background-color: #1091a7;
 }
 
-.input-field {
-    color: #00abc7;
-}
+/* Customizing Materialize CSS input fields colors START */
+.input-field label {
+    color: #1091a7;
+  }
+  /* label focus color */
+  .input-field input:focus + label {
+    color: #1091a7;
+  }
+  /* label underline focus color */
+  input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #1091a7;
+    box-shadow: 0 1px 0 0 #1091a7;
+  }
+  /* valid color */
+  .input-field input.valid {
+    border-bottom: 1px solid #1091a7;
+    box-shadow: 0 1px 0 0 #1091a7;
+  }
+  /* invalid color */
+  .input-field input.invalid {
+    border-bottom: 1px solid #1091a7;
+    box-shadow: 0 1px 0 0 #1091a7;
+  }
+  /* icon prefix focus color */
+  .input-field .prefix.active {
+    color: #1091a7;
+  }
+
+/* Customizing Materialize CSS input fields colors END */
 
 .input-field>.material-icons {
-    color: #00abc7;
+    color: #1091a7;
 }
 
 .input-field>label {
-    color: #00abc7;
+    color: #1091a7;
 }
 
 .dropdown-content>li>a {
-    color: #00abc7;
-} */
+    color: #1091a7;
+}
 
 .forms-stt {
     padding: 20px !important;
@@ -66,4 +91,9 @@ input[type="checkbox"].input-validation-error {
 
 .validation-summary-valid {
     display: none;
+}
+
+.logo-img {
+    max-height: 64px!important;
+    padding: 5px 0!important;
 }

@@ -13,7 +13,4 @@
     <h2><a routerLink = "login">Login</a></h2>
     
   </li>
-  <li *ngIf = "authService.isLoggedIn()">
-    <h2><a (click) = "authService.logout()">Logout</a></h2>
-  </li>
 </ul>

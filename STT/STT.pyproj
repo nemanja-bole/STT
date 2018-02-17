@@ -105,7 +105,12 @@
     <Folder Include="STT\templates\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\static\app\images\svea_logo.jpg" />
+    <Content Include="app\static\app\images\svea_logo_large.png" />
+    <Content Include="app\static\app\images\svea_logo_large_bw.png" />
+    <Content Include="app\static\app\images\svea_logo_medium.png" />
+    <Content Include="app\static\app\images\svea_logo_medium_bw.png" />
+    <Content Include="app\static\app\images\svea_logo_small.png" />
+    <Content Include="app\static\app\images\svea_logo_small_bw.png" />
     <Content Include="STT\templates\activation_email.html">
       <SubType>Code</SubType>
     </Content>

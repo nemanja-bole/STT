@@ -17,6 +17,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { RegistrationSuccessComponent } from './registration-success/registration-success.component';
 import { ActivationComponent } from './activation/activation.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CompetitionsComponent } from './competitions/competitions.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     SignUpComponent,
     RegistrationSuccessComponent,
     ActivationComponent,
-    NavbarComponent
+    NavbarComponent,
+    CompetitionsComponent
   ],
   imports: [
     BrowserModule,

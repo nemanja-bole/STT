@@ -1,17 +1,23 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-      <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-          </button>
-          <a routerLink="/" class="navbar-brand">STT</a>
-      </div>
-      <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-              <li><a routerLink="/">Home</a></li>
-          </ul>          
-      </div>
-  </div>
-</div>
+<nav>
+    <div class="nav-wrapper">
+        <div class="container">
+            <a routerLink="/" class="brand-logo">                
+                <img class="responsive-img logo-img" src="/static/app/images/svea_logo_medium_bw.png" alt="Svea Logo">                
+            </a>
+            <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a routerLink="/">Competitions</a></li>
+                <li><a routerLink="/">Profile</a></li>
+                <li><a routerLink="/">Notifications</a></li>
+                <li class="cyan darken-2"><a (click) = "authService.logout()">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<ul class="sidenav" id="mobile-menu">
+    <li><a routerLink="/">Competitions</a></li>
+    <li><a routerLink="/">Profile</a></li>
+    <li><a routerLink="/">Notifications</a></li>
+    <li class="cyan darken-2"><a (click) = "authService.logout()">Logout</a></li>
+</ul>
