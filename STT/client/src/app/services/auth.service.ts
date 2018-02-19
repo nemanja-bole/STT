@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { JwtHelper, tokenNotExpired, AuthHttp } from 'angular2-jwt';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/throw'
 import { Http, Headers } from '@angular/http';
 import { Router } from '@angular/router';
 
@@ -21,14 +24,17 @@ export class AuthService {
     return this.http.post('/api/auth/', JSON.stringify(credentials), { headers: headers })
     .map(response => {
       let result = response.json();
+
       if(result && result.token) {
         localStorage.setItem('token', result.token);
         return true;
       }
 
       return false;
-
-    });
+    })
+    .catch((error: Response) => {
+      return Observable.throw(false);
+    })
   }
 
   logout() {
@@ -72,7 +78,7 @@ export class AuthService {
     return this.http.get('api/accounts/activation/', { headers: headers, params: { token: token } })
       .map(response => {
         return true;
-      })
+      });
   }
 
 }

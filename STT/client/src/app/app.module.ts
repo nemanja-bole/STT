@@ -1,8 +1,8 @@
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AuthHttp, AUTH_PROVIDERS, provideAuth, AuthConfig } from 
     'angular2-jwt/angular2-jwt';
@@ -18,6 +18,7 @@ import { RegistrationSuccessComponent } from './registration-success/registratio
 import { ActivationComponent } from './activation/activation.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CompetitionsComponent } from './competitions/competitions.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -29,11 +30,13 @@ import { CompetitionsComponent } from './competitions/competitions.component';
     RegistrationSuccessComponent,
     ActivationComponent,
     NavbarComponent,
-    CompetitionsComponent
+    CompetitionsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [AuthGuard], }, 
