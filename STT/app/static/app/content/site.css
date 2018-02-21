@@ -6,7 +6,8 @@ body {
 
 .main-content
 {
-    padding-top: 20px; 
+    padding-top: 20px;
+    flex: 1 0 auto; 
 }
 
 /*Setting materialize theme colors*/
@@ -105,4 +106,14 @@ input[type="checkbox"].input-validation-error {
 .logo-img {
     max-height: 64px!important;
     padding: 5px 0!important;
+}
+
+app-root {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }

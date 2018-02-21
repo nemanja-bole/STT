@@ -1,6 +1,7 @@
+import { AppErrorHandler } from './common/errors/error-handler';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
@@ -19,6 +20,7 @@ import { ActivationComponent } from './activation/activation.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CompetitionsComponent } from './competitions/competitions.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoggedGuard } from './services/logged-guard.service';
 
 
 @NgModule({
@@ -40,17 +42,19 @@ import { FooterComponent } from './footer/footer.component';
     HttpModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [AuthGuard], }, 
-      { path: 'login', component: LoginComponent },
-      { path: 'sign-up', component: SignUpComponent },
-      { path: 'registration-success', component: RegistrationSuccessComponent},
-      { path: 'activation/:token', component: ActivationComponent}
+      { path: 'login', component: LoginComponent, canActivate: [LoggedGuard], },
+      { path: 'sign-up', component: SignUpComponent, canActivate: [LoggedGuard], },
+      { path: 'registration-success', component: RegistrationSuccessComponent, canActivate: [LoggedGuard],},
+      { path: 'activation/:token', component: ActivationComponent},
     ])
   ],
   providers: [
     AuthService,
     AuthGuard,
     AdminAuthGuard,
-    AUTH_PROVIDERS
+    LoggedGuard,
+    AUTH_PROVIDERS,
+    { provide: ErrorHandler, useClass: AppErrorHandler },
   ],
   bootstrap: [AppComponent]
 })

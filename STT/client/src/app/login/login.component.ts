@@ -1,3 +1,5 @@
+import { BadInputError } from './../common/errors/bad-input-error';
+import { AppError } from './../common/errors/app-error';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../services/auth.service';
@@ -36,14 +38,23 @@ export class LoginComponent {
     this.authService.login(this.loginForm.value)
     .subscribe(
       result => {
-      if(result){
-        let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
-        this.router.navigate([returnUrl || '/']);
-      }
-      else {
+        if(result){
+          let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+          this.router.navigate([returnUrl || '/']);
+        }
+        else {
+          
+        }
+    },
+    (error: AppError) => {
+      if(error instanceof BadInputError)
+      {
         this.loginForm.setErrors({
           invalidLogin: true
         });
+      }
+      else {
+        throw error;
       }
     });
   }

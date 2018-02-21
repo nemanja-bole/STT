@@ -6,7 +6,7 @@
       </div>
     </div>
     
-    <div *ngIf="loginForm.errors" class="alert alert-danger">
+    <div *ngIf="loginForm.errors" class="field-validation-error">
       Invalid username and/or password.
     </div>
     <div class="row">
@@ -23,7 +23,7 @@
         <span class="field-validation-error " *ngIf="password.touched && password.invalid" >Password is reqired.</span>
       </div>
     </div>
-    <button class="btn waves-effect waves-light" type="submit">Login</button>
+    <button class="btn waves-effect waves-light" type="submit" [disabled]="loginForm.invalid" >Login</button>
   </form>
 
   <p class="col s12 center-align">Don't have account?

@@ -1,3 +1,5 @@
+import { BadInputError } from './../common/errors/bad-input-error';
+import { AppError } from './../common/errors/app-error';
 import { Injectable } from '@angular/core';
 import { JwtHelper, tokenNotExpired, AuthHttp } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
@@ -33,8 +35,12 @@ export class AuthService {
       return false;
     })
     .catch((error: Response) => {
-      return Observable.throw(false);
-    })
+      if(error.status === 400){
+        return Observable.throw(new BadInputError(error.json()));
+      }
+
+      return Observable.throw(new AppError(error.json())); 
+    });
   }
 
   logout() {
