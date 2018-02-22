@@ -49,7 +49,7 @@ urlpatterns = [
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', admin.site.urls),
 
     url(r'^api/auth/$', obtain_jwt_token),
     url(r'^api/token-refresh/$', refresh_jwt_token),
@@ -58,6 +58,6 @@ urlpatterns = [
     url(r'^api/accounts/', include(accounts.urls)),
     url(r'^api/competitions/', include(competitions.urls)),
 
-    url(r'^(?P<path>.*)/$', app.views.home, name='home'),
+    url(r'^(?P<path>.*)/?$', app.views.home, name='home'),
 
 ]
