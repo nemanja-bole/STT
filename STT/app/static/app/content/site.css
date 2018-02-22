@@ -75,12 +75,16 @@ body {
 }
 
 /* styles for validation helpers */
-.field-validation-error {
+.field-validation-error, .form-validation-error {
     position: relative;
     min-height: 18px;
     display: block;
     font-size: 12px;
     color: #b94a48;
+}
+
+.form-validation-error {
+    font-size: 16px;
 }
 
 .field-validation-valid {

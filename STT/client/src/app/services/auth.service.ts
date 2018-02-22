@@ -74,6 +74,13 @@ export class AuthService {
       else {
         return false;
       }
+    })
+    .catch((error: Response) => {
+        if(error.status === 400) {
+          return Observable.throw(new BadInputError(error));
+        }
+
+        return Observable.throw(new AppError(error))
     });
   }
 
