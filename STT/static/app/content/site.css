@@ -75,12 +75,26 @@ body {
 }
 
 /* styles for validation helpers */
-.field-validation-error {
+.field-validation-error, .form-validation-error, .field-validation-neutral, .field-validation-valid {
     position: relative;
     min-height: 18px;
     display: block;
-    font-size: 12px;
+    font-size: 12px;    
+}
+
+.field-validation-error, .form-validation-error{
     color: #b94a48;
+}
+.field-validation-neutral {
+    color: rgb(51, 51, 51);
+}
+
+.field-validation-valid {
+    color: #50be46;
+}
+
+.form-validation-error {
+    font-size: 16px;
 }
 
 .field-validation-valid {

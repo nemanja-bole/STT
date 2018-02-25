@@ -21,6 +21,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CompetitionsComponent } from './competitions/competitions.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoggedGuard } from './services/logged-guard.service';
+import { EmailValidators } from './common/validators/email.validators';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { LoggedGuard } from './services/logged-guard.service';
     LoggedGuard,
     AUTH_PROVIDERS,
     { provide: ErrorHandler, useClass: AppErrorHandler },
+    EmailValidators,
   ],
   bootstrap: [AppComponent]
 })

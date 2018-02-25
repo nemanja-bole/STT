@@ -88,7 +88,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
         'NAME': 'STT',
-        'HOST': 'localhost',
+        'HOST': 'localhost\SQLEXPRESS',
     }
 }
 

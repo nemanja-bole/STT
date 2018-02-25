@@ -1,3 +1,4 @@
+import { EmailValidators } from './../common/validators/email.validators';
 import { BadInputError } from './../common/errors/bad-input-error';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -12,10 +13,23 @@ import { AppError } from '../common/errors/app-error';
 })
 export class SignUpComponent {
 
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private emailValidators: EmailValidators) { }
+
   signUpForm = new FormGroup({
     "firstName": new FormControl('', Validators.required),
     "lastName": new FormControl('', Validators.required),
-    "email": new FormControl('', [Validators.required, Validators.email, Validators.pattern(new RegExp("@svea.com$"))]),
+    "email": new FormControl(
+      '', 
+      [
+        Validators.required, 
+        Validators.email, 
+        Validators.pattern(new RegExp("@svea.com$"))
+      ],
+      this.emailValidators.shouldBeUnique.bind(this.emailValidators)
+    ),
     "password": new FormControl('', [Validators.required, Validators.minLength(8)]),
   });
 
@@ -33,13 +47,7 @@ export class SignUpComponent {
 
   get password(){
     return this.signUpForm.get("password");
-  }
-
-  constructor(
-    private authService: AuthService,
-    private router: Router) {
-
-  }
+  }  
 
   signUp(){
     this.authService.signUp(this.signUpForm.value)

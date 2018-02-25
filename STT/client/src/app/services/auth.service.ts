@@ -77,10 +77,10 @@ export class AuthService {
     })
     .catch((error: Response) => {
         if(error.status === 400) {
-          return Observable.throw(new BadInputError(error));
+          return Observable.throw(new BadInputError(error.json()));
         }
 
-        return Observable.throw(new AppError(error))
+        return Observable.throw(new AppError(error.json()))
     });
   }
 
@@ -91,7 +91,31 @@ export class AuthService {
     return this.http.get('api/accounts/activation/', { headers: headers, params: { token: token } })
       .map(response => {
         return true;
+      })
+      .catch((error: Response) => {
+        return Observable.throw(new AppError(error.json()));
       });
+  }
+
+  checkEmailAvailability(email:string) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let body = {
+      email: email
+    }
+    return this.http.post('api/accounts/availability/', JSON.stringify(body), { headers: headers })
+    .map(response => {
+        let result = response.json();
+        if(result && result.registred){
+          return true;
+        }
+        else {
+          return false;
+        }
+    })
+    .catch((error: Response) => {
+      return Observable.throw(new AppError(error.json()));
+    });
   }
 
 }

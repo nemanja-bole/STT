@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from rest_framework import generics, permissions, serializers
+from rest_framework import generics, permissions, serializers, status
 from rest_framework.views import APIView
 from rest_framework.exceptions import APIException
 from rest_framework.response import Response
@@ -32,6 +32,19 @@ class UserActivationView(APIView):
             pass        
 
         return Response({ "activation" : True });
+
+class CheckUserRegistredView(APIView):
+    permission_classes = (permissions.AllowAny, )
+
+    def post(self, request):
+        try:
+            body = request.data
+            email = body.get('email')
+            registred = User.objects.filter(email = email).exists()
+        
+            return Response({ "registred": registred }, status = status.HTTP_200_OK)
+        except:
+            return Response({"email": "Email is required field.", "error": e}, status=status.HTTP_400_BAD_REQUEST)
 
 
 
