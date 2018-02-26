@@ -43,6 +43,7 @@ class CheckUserRegistredView(APIView):
             registred = User.objects.filter(email = email).exists()
         
             return Response({ "registred": registred }, status = status.HTTP_200_OK)
+
         except:
             return Response({"email": "Email is required field.", "error": e}, status=status.HTTP_400_BAD_REQUEST)
 

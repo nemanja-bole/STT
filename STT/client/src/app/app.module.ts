@@ -1,3 +1,4 @@
+import { CompetitionService } from './services/competition.service';
 import { AppErrorHandler } from './common/errors/error-handler';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -46,7 +47,8 @@ import { EmailValidators } from './common/validators/email.validators';
       { path: 'login', component: LoginComponent, canActivate: [LoggedGuard], },
       { path: 'sign-up', component: SignUpComponent, canActivate: [LoggedGuard], },
       { path: 'registration-success', component: RegistrationSuccessComponent, canActivate: [LoggedGuard],},
-      { path: 'activation/:token', component: ActivationComponent},
+      { path: 'activation/:token', component: ActivationComponent, canActivate: [LoggedGuard], },
+      { path: 'competitions', component: CompetitionsComponent, canActivate: [AuthGuard],}, 
     ])
   ],
   providers: [
@@ -57,6 +59,7 @@ import { EmailValidators } from './common/validators/email.validators';
     AUTH_PROVIDERS,
     { provide: ErrorHandler, useClass: AppErrorHandler },
     EmailValidators,
+    CompetitionService,
   ],
   bootstrap: [AppComponent]
 })

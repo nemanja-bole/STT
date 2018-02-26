@@ -1,3 +1,4 @@
+import { NotFoundError } from './../common/errors/not-found-error';
 import { BadInputError } from './../common/errors/bad-input-error';
 import { AppError } from './../common/errors/app-error';
 import { Injectable } from '@angular/core';
@@ -34,13 +35,7 @@ export class AuthService {
 
       return false;
     })
-    .catch((error: Response) => {
-      if(error.status === 400){
-        return Observable.throw(new BadInputError(error.json()));
-      }
-
-      return Observable.throw(new AppError(error.json())); 
-    });
+    .catch(this.handleError);
   }
 
   logout() {
@@ -75,13 +70,7 @@ export class AuthService {
         return false;
       }
     })
-    .catch((error: Response) => {
-        if(error.status === 400) {
-          return Observable.throw(new BadInputError(error.json()));
-        }
-
-        return Observable.throw(new AppError(error.json()))
-    });
+    .catch(this.handleError);
   }
 
   activation(token) {
@@ -92,9 +81,7 @@ export class AuthService {
       .map(response => {
         return true;
       })
-      .catch((error: Response) => {
-        return Observable.throw(new AppError(error.json()));
-      });
+      .catch(this.handleError);
   }
 
   checkEmailAvailability(email:string) {
@@ -113,9 +100,20 @@ export class AuthService {
           return false;
         }
     })
-    .catch((error: Response) => {
-      return Observable.throw(new AppError(error.json()));
-    });
+    .catch(this.handleError);
+  }
+
+  private handleError(error: Response){
+    if(error.status === 400){
+        return Observable.throw(new BadInputError(error.json()));
+    }
+
+    if(error.status === 404) {
+        return Observable.throw(new NotFoundError());
+    }
+    
+    return Observable.throw(new AppError(error.json()));
+    
   }
 
 }
