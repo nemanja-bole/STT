@@ -43,12 +43,12 @@ import { EmailValidators } from './common/validators/email.validators';
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [AuthGuard], }, 
-      { path: 'login', component: LoginComponent, canActivate: [LoggedGuard], },
-      { path: 'sign-up', component: SignUpComponent, canActivate: [LoggedGuard], },
-      { path: 'registration-success', component: RegistrationSuccessComponent, canActivate: [LoggedGuard],},
-      { path: 'activation/:token', component: ActivationComponent, canActivate: [LoggedGuard], },
-      { path: 'competitions', component: CompetitionsComponent, canActivate: [AuthGuard],}, 
+      { path: '',                       component: HomeComponent,                     canActivate: [AuthGuard],   pathMatch: 'full',  }, 
+      { path: 'login',                  component: LoginComponent,                    canActivate: [LoggedGuard],                     },
+      { path: 'sign-up',                component: SignUpComponent,                   canActivate: [LoggedGuard],                     },
+      { path: 'registration-success',   component: RegistrationSuccessComponent,      canActivate: [LoggedGuard],                     },
+      { path: 'activation/:token',      component: ActivationComponent,               canActivate: [LoggedGuard],                     },
+      { path: 'competitions',           component: CompetitionsComponent,             canActivate: [AuthGuard],                       }, 
     ])
   ],
   providers: [
