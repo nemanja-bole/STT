@@ -1,10 +1,10 @@
-import { EmailValidators } from './../common/validators/email.validators';
-import { BadInputError } from './../common/errors/bad-input-error';
+import { EmailValidators } from '../../common/validators/email.validators';
+import { BadInputError } from '../../common/errors/bad-input-error';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { AppError } from '../common/errors/app-error';
+import { AppError } from '../../common/errors/app-error';
 
 @Component({
   selector: 'app-sign-up',

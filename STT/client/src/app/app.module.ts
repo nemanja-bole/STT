@@ -10,17 +10,17 @@ import { AuthHttp, AUTH_PROVIDERS, provideAuth, AuthConfig } from
     'angular2-jwt/angular2-jwt';
 
 
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { AppComponent } from './views/app.component';
+import { LoginComponent } from './views/login/login.component';
 import { AuthService } from './services/auth.service';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './views/home/home.component';
 import { AuthGuard } from './services/auth-guard.service';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { RegistrationSuccessComponent } from './registration-success/registration-success.component';
-import { ActivationComponent } from './activation/activation.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { CompetitionsComponent } from './competitions/competitions.component';
-import { FooterComponent } from './footer/footer.component';
+import { SignUpComponent } from './views/sign-up/sign-up.component';
+import { RegistrationSuccessComponent } from './views/registration-success/registration-success.component';
+import { ActivationComponent } from './views/activation/activation.component';
+import { NavbarComponent } from './views/navbar/navbar.component';
+import { CompetitionsComponent } from './views/competitions/competitions.component';
+import { FooterComponent } from './views/footer/footer.component';
 import { LoggedGuard } from './services/logged-guard.service';
 import { EmailValidators } from './common/validators/email.validators';
 

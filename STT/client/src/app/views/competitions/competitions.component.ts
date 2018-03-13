@@ -1,4 +1,4 @@
-import { CompetitionService } from './../services/competition.service';
+import { CompetitionService } from '../../services/competition.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

@@ -1,8 +1,8 @@
-import { BadInputError } from './../common/errors/bad-input-error';
-import { AppError } from './../common/errors/app-error';
+import { BadInputError } from '../../common/errors/bad-input-error';
+import { AppError } from '../../common/errors/app-error';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
