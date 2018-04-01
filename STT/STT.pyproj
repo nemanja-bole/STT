@@ -71,7 +71,13 @@
     <Compile Include="competitions\views.py" />
     <Compile Include="competitions\__init__.py" />
     <Compile Include="manage.py" />
+    <Compile Include="STT\errors.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="STT\jwt_helper.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="STT\services.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="STT\__init__.py" />

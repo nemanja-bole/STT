@@ -7,7 +7,8 @@ from accounts.serializers import UserSerializer
 class CompetitionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Competition
-        fields = ("name", "date",)
+        fields = ("id","name", "date",)
+        read_only_fields = ('id',)
 
 class PlayerCompetitionStatSerializer(serializers.ModelSerializer):
     competition = CompetitionSerializer(read_only = True)
