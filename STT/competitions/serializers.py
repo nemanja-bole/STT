@@ -8,7 +8,11 @@ class CompetitionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Competition
         fields = ("id","name", "date",)
-        read_only_fields = ('id',)
+        read_only_fields = ("id","date",)
+
+    def create(self, validated_data):
+        return Competition.objects.create(**validated_data)
+        
 
 class PlayerCompetitionStatSerializer(serializers.ModelSerializer):
     competition = CompetitionSerializer(read_only = True)
