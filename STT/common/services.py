@@ -1,5 +1,6 @@
 from django import forms
 from django.db import transaction
+from .dtos import Dto
 
 class Service:
 
@@ -13,4 +14,4 @@ class Service:
         raise NotImplementedError();
 
     def createResponse(self, data, errors):
-        return {"data": data, "errors": errors}
+        return Dto(data = data, errors = errors)

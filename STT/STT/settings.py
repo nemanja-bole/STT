@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'app',
     'accounts',
     'competitions',
+    'common',
     # Add your apps here to enable them
     'django.contrib.admin',
     'django.contrib.auth',

@@ -54,6 +54,16 @@
     <Compile Include="app\views.py" />
     <Compile Include="app\__init__.py" />
     <Compile Include="app\migrations\__init__.py" />
+    <Compile Include="common\admin.py" />
+    <Compile Include="common\apps.py" />
+    <Compile Include="common\dtos.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="common\migrations\__init__.py" />
+    <Compile Include="common\models.py" />
+    <Compile Include="common\tests.py" />
+    <Compile Include="common\views.py" />
+    <Compile Include="common\__init__.py" />
     <Compile Include="competitions\admin.py" />
     <Compile Include="competitions\apps.py" />
     <Compile Include="competitions\managers.py">
@@ -80,7 +90,7 @@
     <Compile Include="STT\jwt_helper.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="STT\services.py">
+    <Compile Include="common\services.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="STT\__init__.py" />
@@ -108,6 +118,9 @@
     <Folder Include="client\src\app\" />
     <Folder Include="client\src\assets\" />
     <Folder Include="client\src\environments\" />
+    <Folder Include="common\" />
+    <Folder Include="common\migrations\" />
+    <Folder Include="common\templates\" />
     <Folder Include="competitions\" />
     <Folder Include="competitions\migrations\" />
     <Folder Include="STT\" />
@@ -120,6 +133,7 @@
     <Content Include="app\static\app\images\svea_logo_medium_bw.png" />
     <Content Include="app\static\app\images\svea_logo_small.png" />
     <Content Include="app\static\app\images\svea_logo_small_bw.png" />
+    <Content Include="common\templates\index.html" />
     <Content Include="STT\templates\activation_email.html">
       <SubType>Code</SubType>
     </Content>

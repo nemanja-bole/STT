@@ -2,7 +2,7 @@ from django.http import JsonResponse
 
 from competitions.serializers import CompetitionSerializer
 from competitions.models import Competition
-from STT.services import Service
+from common.services import Service
 
 
 class CreateCompetition(Service):
@@ -21,4 +21,14 @@ class GetCompetitions(Service):
 
     def process(self, data, files):
         serializer = CompetitionSerializer(Competition.objects.all(), many = True)
+        return self.createResponse(serializer.data, False)
+
+class GetCompetition(Service):
+
+    def process(self, data, files):
+        try:
+            serializer = CompetitionSerializer(Competition.objects.get(id = data), many = False)
+        except:
+            return self.createResponse({"detail": "Not found"}, True);
+
         return self.createResponse(serializer.data, False)
