@@ -1,18 +1,16 @@
 from django import forms
 from django.db import transaction
 
-class Service(forms.Form):
-
-    def service_clean(self):
-        if not self.is_valid():
-            raise ValueError("Implement error handler!")
+class Service:
 
     @classmethod
-    def execute(cls, inputs, files = None, **kwargs):
-        instance = cls(inputs, files, **kwargs)
-        instance.service_clean()
+    def execute(cls, inputs = None, files = None, **kwargs):
+        instance = cls()
         with transaction.atomic():
-            return instance.process()
+            return instance.process(inputs, files)
 
-    def process(self):
+    def process(self, data, files):
         raise NotImplementedError();
+
+    def createResponse(self, data, errors):
+        return {"data": data, "errors": errors}

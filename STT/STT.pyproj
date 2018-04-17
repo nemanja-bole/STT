@@ -64,6 +64,9 @@
     <Compile Include="competitions\serializers.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="competitions\services.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="competitions\tests.py" />
     <Compile Include="competitions\urls.py">
       <SubType>Code</SubType>

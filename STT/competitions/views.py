@@ -4,28 +4,28 @@ from rest_framework.views import APIView
 from rest_framework import permissions, status
 from rest_framework.response import Response
 
-from competitions.serializers import CompetitionSerializer
-from competitions.models import Competition
+from competitions.services import CreateCompetition, GetCompetitions
 
 class CompetitionsListView(APIView):
     permission_classes = (permissions.IsAuthenticated, )
     
     def get(self, request):
-        serializer = CompetitionSerializer(Competition.objects.all(), many = True)
+        competitions = GetCompetitions.execute()
 
-        return Response(serializer.data, status = status.HTTP_200_OK)
+        if not competitions["errors"]:
+            return Response(competitions["data"], status = status.HTTP_200_OK)
+        else:
+            return Response(competitions["data"], status = status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def post(self, request):
         permission_classes = (permissions.IsAuthenticated,)
 
-        write_serializer = CompetitionSerializer(data = request.data)
+        new_competition = CreateCompetition.execute(request.data)
 
-        if write_serializer.is_valid():
-            new_competition = write_serializer.save()
-            read_serializer = CompetitionSerializer(new_competition)
-            return Response(read_serializer.data, status= status.HTTP_201_CREATED)
+        if not new_competition["errors"]:
+            return Response(new_competition["data"], status= status.HTTP_201_CREATED)
 
-        return Response(write_serializer.errors, status= status.HTTP_400_BAD_REQUEST)
+        return Response(new_competition["errors"], status= status.HTTP_400_BAD_REQUEST)
 
 
 class CompetitionView(APIView):
