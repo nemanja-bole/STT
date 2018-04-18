@@ -8,9 +8,9 @@ class Service:
     def execute(cls, inputs = None, files = None, **kwargs):
         instance = cls()
         with transaction.atomic():
-            return instance.process(inputs, files)
+            return instance.process(inputs, files, **kwargs)
 
-    def process(self, data, files):
+    def process(self, data, files, **kwargs):
         raise NotImplementedError();
 
     def createResponse(self, data, errors):
