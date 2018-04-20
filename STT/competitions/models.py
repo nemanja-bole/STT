@@ -8,8 +8,6 @@ class Competition(models.Model):
     name = models.CharField(max_length = 30)
     date = models.DateTimeField(auto_now_add = True)
 
-    objects = CompetitionManager()
-
     class Meta:
         verbose_name = "competition"
         verbose_name_plural = "competitions"

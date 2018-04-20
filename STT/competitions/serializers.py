@@ -27,6 +27,9 @@ class PlayerCompetitionStatSerializer(serializers.ModelSerializer):
         model = PlayerCompetitionStat
         fields = ("competition", "player", "points", "games_played", "won", "lost", "drawn",)
 
+    def create(self, competition_id, player_id, validated_data):
+        competition = Competition.objects.get()
+
 
 class HistorySerializer(serializers.ModelSerializer):
     competition = CompetitionSerializer(read_only = True)

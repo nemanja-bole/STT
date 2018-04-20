@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework import permissions, status
 from rest_framework.response import Response
 
-from competitions.services import CreateCompetition, GetCompetitions, GetCompetition, UpdateCompetition
+from competitions.services import CreateCompetition, GetCompetitions, GetCompetition, UpdateCompetition, GetPlayersCompetitionStat, CreatePlayerCompetitionStat
 
 class CompetitionsListView(APIView):
     permission_classes = (permissions.IsAuthenticated, )
@@ -49,3 +49,12 @@ class CompetitionView(APIView):
 
         return Response(updated_competition.data, status.HTTP_200_OK)
 
+class PlayerCompetitionStatisticsList(APIView):
+    
+    def get(self, request, competition_id):
+        players = GetPlayersCompetitionStat().execute(competition_id = competition_id)
+
+        return Response(players.data, status.HTTP_200_OK)
+
+    def post(self, request, competition_id):
+        player_competition_statistic = CreatePlayerCompetitionStat().execute(competition_id = competition_id)

@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 
-from competitions.serializers import CompetitionSerializer
-from competitions.models import Competition
+from competitions.serializers import CompetitionSerializer, PlayerCompetitionStatSerializer
+from competitions.models import Competition, PlayerCompetitionStat
 from common.services import Service
 
 
@@ -50,3 +50,14 @@ class UpdateCompetition(Service):
             return self.createResponse(read_serializer.data, False)
         else:
             return self.createResponse(read_serializer.errors, True)
+
+class GetPlayersCompetitionStat(Service):
+    
+    def process(self, data, files, competition_id = None):
+        read_serializer = PlayerCompetitionStatSerializer(PlayerCompetitionStat.objects.filter(competition__id = competition_id), many = True)
+        return self.createResponse(read_serializer.data, False)
+
+class CreatePlayerCompetitionStat(Service):
+
+    def process(self, data, files, competition_id = None):
+        write_serializer = PlayerCompetitionStatSerializer()
